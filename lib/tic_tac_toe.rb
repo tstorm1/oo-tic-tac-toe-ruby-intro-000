@@ -28,8 +28,8 @@ class TicTacToe
 
   #move(board, 0, "O")
 
-  def move(board, index, default_player)
-    board[index] = default_player
+  def move(index, default_player)
+    @board[index] = default_player
   end
 
   def position_taken?(board, index)
