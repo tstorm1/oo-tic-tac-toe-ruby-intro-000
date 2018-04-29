@@ -32,37 +32,36 @@ class TicTacToe
     @board[index] = default_player
   end
 
-  def position_taken?(board, index)
-    !(board[index].nil? || board[index] == " ")
+  def position_taken?(index)
+    !(@board[index].nil? || @board[index] == " ")
   end
 
-  def valid_move?(board, index)
-    if index.between?(0,8) && position_taken?(board, index) == false
+  def valid_move?(index)
+    if index.between?(0,8) && position_taken?(@board, index) == false
       return true
     else return false
     end
   end
 
-  def turn(board)
-  #    default_player = "X"
+  def turn
 
-      default_player = current_player(board)
+      default_player = current_player(@board)
 
       puts "Please enter 1-9:"
       user_input = gets.strip
       index = input_to_index(user_input)
-      if valid_move?(board, index) == true
-        move(board, index, default_player) && display_board(board)
-      elsif over?(board) == false
-        turn(board)
-      else over?(board) == true
+      if valid_move?(@board, index) == true
+        move(@board, index, default_player) && display_board(@board)
+      elsif over?(@board) == false
+        turn(@board)
+      else over?(@board) == true
         false
     end
   end
 
-  def turn_count(board)
+  def turn_count
     counter = 0
-    board.each do |turn|
+    @board.each do |turn|
       if turn != " "
         counter += 1
       end
@@ -70,23 +69,23 @@ class TicTacToe
     return counter
   end
 
-  def current_player(board)
-    if turn_count(board) % 2 == 0
+  def current_player
+    if turn_count(@board) % 2 == 0
       return "X"
     else
       return "O"
     end
   end
 
-  def won?(board)
+  def won?
     WIN_COMBINATIONS.each do |win_combination|
         win_index_1 = win_combination[0]
         win_index_2 = win_combination[1]
         win_index_3 = win_combination[2]
 
-        position_1 = board[win_index_1]
-        position_2 = board[win_index_2]
-        position_3 = board[win_index_3]
+        position_1 = @board[win_index_1]
+        position_2 = @board[win_index_2]
+        position_3 = @board[win_index_3]
 
         if position_1 == "X" && position_2 == "X" && position_3 == "X"
           return win_combination
@@ -99,22 +98,22 @@ class TicTacToe
      false
   end
 
-  def full?(board)
-     board.all? { |e| e != " "}
+  def full?
+     @board.all? { |e| e != " "}
   end
 
-  def draw?(board)
-    won?(board) == false && full?(board) == true
+  def draw?
+    won?(@board) == false && full?(@board) == true
   end
 
-  def over?(board)
-    won?(board) != false || full?(board) == true || draw?(board) == true
+  def over?
+    won?(@board) != false || full?(@board) == true || draw?(@board) == true
   end
 
-  def winner(board)
-    if won?(board)
-      index = won?(board)[0]
-      board[index]
+  def winner
+    if won?(@board)
+      index = won?(@board)[0]
+      @board[index]
     end
   end
 
