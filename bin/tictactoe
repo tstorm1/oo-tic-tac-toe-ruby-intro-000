@@ -6,8 +6,8 @@ name_game = TicTacToe.new
 
 puts "Welcome to Tic Tac Toe!"
 
-board = [" "," "," "," "," "," "," "," "," "]
+#board = [" "," "," "," "," "," "," "," "," "]
 
-display_board
+name_game.display_board
 
-play
+name_game.play
