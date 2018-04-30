@@ -89,16 +89,16 @@ class TicTacToe
   end
 
   def draw?
-    won?(@board) == false && full?(@board) == true
+    won? == false && full? == true
   end
 
   def over?
-    won?(@board) != false || full?(@board) == true || draw?(@board) == true
+    won? != false || full? == true || draw? == true
   end
 
   def winner
-    if won?(@board)
-      index = won?(@board)[0]
+    if won?
+      index = won?[0]
       @board[index]
     end
   end
