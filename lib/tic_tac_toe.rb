@@ -113,6 +113,7 @@ class TicTacToe
     elsif draw? == true
       puts "Cat's Game!"
     else
+      play
     end
   end
 
