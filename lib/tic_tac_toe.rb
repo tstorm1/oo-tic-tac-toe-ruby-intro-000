@@ -42,15 +42,15 @@ class TicTacToe
   end
 
   def turn
-      default_player = current_player(@board)
+      default_player = current_player
       puts "Please enter 1-9:"
       user_input = gets.strip
       index = input_to_index(user_input)
-      if valid_move?(@board, index) == true
-        move(@board, index, default_player) && display_board(@board)
-      elsif over?(@board) == false
-        turn(@board)
-      else over?(@board) == true
+      if valid_move?(index) == true
+        move(index, default_player) && display_board
+      elsif over? == false
+        turn
+      else over? == true
         false
     end
   end
