@@ -26,8 +26,6 @@ class TicTacToe
     user_input.to_i - 1
   end
 
-  #move(board, 0, "O")
-
   def move(index, default_player)
     @board[index] = default_player
   end
